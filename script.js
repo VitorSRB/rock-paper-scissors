@@ -33,4 +33,27 @@ function getComputerChoice(){
 }
 const computerSelection = getComputerChoice();
 
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(computerChoice, humanChoice) {
+  if (humanChoice === `rock` && computerChoice === `scissors`) {
+    console.log(`You win!`);
+    return humanScore = humanScore + 1;
+  } else if (humanChoice === `paper` && computerChoice === `rock`) {
+    console.log(`You win!`);
+    return humanScore = humanScore + 1;
+  } else if (humanChoice === `scissors` && computerChoice === `paper`) {
+    console.log(`You win!`);
+    return humanScore = humanScore + 1;
+  } else if (humanChoice === computerChoice) {
+    console.log(`It's a draw`);
+    return (`Draw`)
+  } else {
+    console.log(`CPU wins!`);
+    return computerScore = computerScore + 1;
+  }
+}
+
+
 
