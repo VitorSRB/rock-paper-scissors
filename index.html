@@ -3,12 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Rock Paper Scissors</title>
-
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  
+  <!-- Substitui a div #nameGame por <header> -->
+  <header id="nameGame">
+    <h1>ROCK PAPER SCISSORS</h1>    
+  </header>
+
+  <!-- Substitui a div #scoreAndPlayers por <main> ou <section> -->
+  <main id="scoreAndPlayers">
+    <div class="scoreTitle">
+      <h2>SCORE</h2>
+    </div>
+
+    <div class="players">
+      <h3>PLAYER</h3>
+      <h3>CPU</h3>
+    </div>
+
+    <div class="showScore">
+      <span id="playerScore">0</span>
+      <span id="cpuScore">0</span>
+    </div>
+
+    <div id="message">
+      <p>Faça sua jogada para começar!</p>
+    </div>
+  </main>
+
+  <!-- Substitui a div #optionGame por <section> contendo o grupo de botões -->
+  <section id="optionGame" aria-label="Game Controls">
+    <button type="button" class="btnRock">Rock</button>    
+    <button type="button" class="btnPaper">Paper</button>  
+    <button type="button" class="btnScissors">Scissors</button>
+  </section>
+
 </body>
 </html>

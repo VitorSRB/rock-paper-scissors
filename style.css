@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(189, 189, 105);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#nameGame {
+  margin-top: 40px;
+  color: antiquewhite;
+  font-size: xx-large;
+  text-align: center;
+}
+
+#scoreAndPlayers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(140, 140, 70);
+  border: 4px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  width: 370px; 
+}
+
+.scoreTitle h2 {
+  color: red;
+  font-size: xx-large;
+  margin-bottom: 15px;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: antiquewhite;
+  font-size: larger;
+  padding: 0 10px;
+}
+
+.showScore {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.showScore span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 80px;
+  background-color: white;
+  border: 4px solid orange;
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#message {
+  margin-top: 10px;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Botões de jogada */
+#optionGame {
+  display: flex;
+  gap: 15px;
+}
+
+#optionGame button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: antiquewhite;
+  transition: transform 0.1s ease;
+}
+
+#optionGame button:hover {
+  transform: scale(1.05);
+  background-color: white;
+}
