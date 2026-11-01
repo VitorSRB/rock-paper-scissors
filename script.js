@@ -1,37 +1,18 @@
 let humanScore = 0; 
 let computerScore = 0;
-let consecutiveErros = 0; 
-let isDisqualified = false;
 
-function getHumanChoice() { 
-  while (true) {
-    let humanPlayer = prompt(`Rock, Paper or Scissors?`);
+const placarPlayer = document.querySelector(`#playerScore`);
+const placarCpu = document.querySelector(`#cpuScore`)
+const message = document.querySelector(`#message`);
 
-    // Guard Clause - Proteção caso o usuário clique em 'cancelar' no prompt
-    if (humanPlayer === null) {
-      humanPlayer = ``;
-    }
+const btnRock = document.querySelector('.btnRock');
+const btnPaper = document.querySelector('.btnPaper');
+const btnScissors = document.querySelector('.btnScissors')
 
-    humanPlayer = humanPlayer.toLowerCase().trim();
+btnRock.addEventListener(`click`,(e) => playRound(`rock`, getComputerChoice()));
+btnPaper.addEventListener(`click`,(e) => playRound(`paper`, getComputerChoice()));
+btnScissors.addEventListener(`click`,(e) => playRound(`scissors`, getComputerChoice()));
 
-    // 1. Verifica se é uma opção válida
-    if (humanPlayer === `rock` || humanPlayer === `paper` || humanPlayer === `scissors`) {
-      consecutiveErros = 0;
-      console.log(`You choose ${humanPlayer}!`);
-      return humanPlayer;
-    }
-
-    // 2. Se chegou aqui, foi erro de digitação
-    consecutiveErros++;
-    console.log(`You made a typo; please pay attention to the available options and try again.`);
-
-    // 3. Checa desclassificação por 3 erros consecutivos
-    if (consecutiveErros >= 3) {
-      console.log(`3 consecutive typos! You were disqualified!`);
-      return false; // Retorna false para indicar desclassificação no playGame()
-    }
-  }
-}
 
 function getComputerChoice() { 
   let computerPlayer = Math.random();
@@ -52,6 +33,7 @@ function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     humanScore++;
     computerScore++;
+    message.textContent = `It s a draw! Both choose ${humanChoice}.`;
     console.log(`It's a draw! Both choose ${humanChoice}.`);
   } else if (
     (humanChoice === `rock` && computerChoice === `scissors`) ||
@@ -59,56 +41,33 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === `scissors` && computerChoice === `paper`)
   ) {
     humanScore++;
+    message.textContent = `You win! ${humanChoice} beats ${computerChoice}.`
     console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
   } else {
     computerScore++;
+    message.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`
     console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
   }
-
-  console.log(`SCORE`);
-  console.log(`YOU: ${humanScore} CPU: ${computerScore}`);
+  
+  placarPlayer.textContent = humanScore;
+  placarCpu.textContent = computerScore;
+  
+  if (humanScore === 5 || computerScore === 5) {
+    declareWinner();
+  }
 }  
 
-function playGame() { 
-  //Guard Clause
-  if (isDisqualified) return;
-  
-  const humanChoice = getHumanChoice();
-  
-  if (humanChoice === false) {
-    isDisqualified = true;
-    humanScore = 0;
-    computerScore = 3;
-    console.log(`CPU wins by disqualification!`);
-    return;
-  } 
-
-  const computerChoice = getComputerChoice();  
-  playRound(humanChoice, computerChoice); 
-}
-
-function finalScore() { 
+function declareWinner (){
   if (humanScore === computerScore) {
-    console.log(`FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`);
-    console.log(`This battle was a DRAW!`);
-  } else if (humanScore > computerScore) {
-    console.log(`FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`);
-    console.log(`YOU WIN!`);
-  } else {
-    console.log(`FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`);
-    console.log(`CPU wins!`);
-  }
+  message.textContent = `This battle was a DRAW! FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`;
+} else if (humanScore > computerScore) {
+  message.textContent = `YOU WIN THE GAME! FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`;
+} else {
+  message.textContent = `YOU LOSE THE GAME! FINAL SCORE: YOU ${humanScore} CPU: ${computerScore}`;
+}
+  btnRock.disabled = true;
+  btnPaper.disabled = true;
+  btnScissors.disabled = true;
 }
 
-let btn = document.querySelectorAll('.btn');
 
-btn.addEventListener('click',)
-
-// Execução das partidas
-// playGame();
-// playGame();
-// playGame();
-// playGame();
-// playGame();
-
-finalScore();
